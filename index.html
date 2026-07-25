@@ -9,36 +9,44 @@
          max-width: 720px; margin: 0 auto; padding: 32px 20px; line-height: 1.7; color: #333; }
   h1 { font-size: 1.6em; } h2 { font-size: 1.15em; margin-top: 2em; }
   .en { color: #666; font-size: 0.95em; border-top: 1px solid #eee; margin-top: 3em; padding-top: 1.5em; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95em; }
+  td, th { border: 1px solid #ddd; padding: 8px 10px; text-align: left; }
 </style>
 </head>
 <body>
 <h1>동행 개인정보처리방침</h1>
-<p>시행일: 2026년 7월 20일</p>
+<p>시행일: 2026년 7월 20일 · 개정일: 2026년 7월 25일 (v2)</p>
 
-<h2>1. 수집하는 개인정보</h2>
-<p><strong>동행은 개인정보를 수집하지 않습니다.</strong> 앱에 입력하는 모든 정보(역할, 시술 유형, 단계, 체크리스트, 알림 시간, 지원 횟수)는 사용자의 기기에만 저장되며, 외부 서버로 전송되지 않습니다.</p>
+<h2>1. 처리하는 정보</h2>
+<table>
+<tr><th>항목</th><th>내용</th><th>보관 위치</th></tr>
+<tr><td>익명 식별자</td><td>Firebase 익명 로그인으로 생성되는 무작위 ID (이름·이메일·전화번호를 수집하지 않습니다)</td><td>서버</td></tr>
+<tr><td>여정 설정·체크리스트·알림 시간</td><td>시술 유형, 단계, 완료 체크</td><td>기기 + (동반자 연결 시) 서버</td></tr>
+<tr><td>음성 기록</td><td>음성은 기기에서 텍스트로만 변환되며 <strong>음성 파일은 저장·전송되지 않습니다</strong>. "AI로 정리"를 누른 경우에만 텍스트와 AI 결과가 서버(Firestore)에 저장됩니다</td><td>기기 + 서버</td></tr>
+<tr><td>푸시 토큰</td><td>동반자 알림 전송용 기기 토큰</td><td>서버</td></tr>
+</table>
 
-<h2>2. 제3자 제공 및 광고</h2>
-<p>수집하는 정보가 없으므로 제3자 제공, 위탁, 국외 이전이 없습니다. 광고 SDK와 분석(애널리틱스) 도구를 사용하지 않습니다.</p>
+<h2>2. AI 처리 위탁</h2>
+<p>"AI로 정리" 기능 사용 시 기록 텍스트가 당사 서버를 거쳐 Google의 Gemini API로 전송되어 요약·구조화됩니다. Google Cloud(서울 리전) 및 Google Gemini API가 처리 수탁자이며, 광고 목적 사용은 없습니다.</p>
 
-<h2>3. 알림</h2>
-<p>주사 알림은 기기의 로컬 알림 기능만 사용합니다. 알림 권한은 기기 설정에서 언제든 철회할 수 있습니다.</p>
+<h2>3. 동반자 공유 (선택, 별도 동의)</h2>
+<p>초대코드로 동반자와 연결하면 <strong>연결 시점에 별도 동의</strong>를 받으며, 동의 후 서로에게 공유되는 정보는 다음으로 한정됩니다: 시술 유형·현재 단계·주사 완료 여부, 그리고 본인이 직접 전송 버튼을 누른 브리핑 문장. <strong>피검사 결과 등 그 외 정보는 자동으로 공유되지 않습니다.</strong> 연결 해제는 언제든 가능합니다.</p>
 
-<h2>4. 데이터 삭제</h2>
-<p>앱 내 <strong>더보기 → 데이터 모두 삭제</strong>를 누르거나 앱을 삭제하면 모든 데이터가 즉시, 완전히 삭제됩니다. 서버 사본은 존재하지 않습니다.</p>
+<h2>4. 제3자 제공 및 광고</h2>
+<p>위 처리 위탁 외 제3자 제공이 없으며, 광고 SDK와 판매 목적 데이터 활용이 없습니다.</p>
 
-<h2>5. 의료 정보 고지</h2>
+<h2>5. 보유 및 삭제</h2>
+<p>앱 내 <strong>더보기 → 데이터 모두 삭제</strong> 시 기기 데이터와 서버 저장분(기록·연결·토큰)이 함께 삭제됩니다. 앱만 삭제한 경우 익명 계정에 접근할 수 없게 되며, 서버 잔존분 삭제는 아래 이메일로 요청할 수 있습니다.</p>
+
+<h2>6. 의료 정보 고지</h2>
 <p>동행은 의료기기·의료 서비스가 아니며, 앱의 정보는 참고용입니다. 의료적 판단은 반드시 담당 의료진과 상의하시기 바랍니다.</p>
-
-<h2>6. 방침 변경</h2>
-<p>계정·동기화 등 새로운 기능 도입으로 개인정보 처리가 발생하게 되는 경우, 사전에 본 방침을 개정하고 앱 내에 고지합니다.</p>
 
 <h2>7. 문의</h2>
 <p>이메일: khk9462@gmail.com</p>
 
 <div class="en">
 <h2>Privacy Policy (English Summary)</h2>
-<p>Donghaeng does not collect any personal data. All information entered in the app is stored locally on your device only and is never transmitted to any server. No third-party sharing, no ads, no analytics. Injection reminders use local notifications only. Delete all data anytime via <em>More → Delete all data</em> or by uninstalling the app. This app is not a medical device; always consult your doctor. Contact: khk9462@gmail.com</p>
+<p>Donghaeng uses Firebase anonymous authentication (no name/email/phone collected). Voice is transcribed on-device; audio is never stored or transmitted. If you tap "Organize with AI", the text and AI result are stored on our server (Firestore, Seoul) and processed via Google Gemini API. Optional partner linking (with separate consent) shares only: treatment type, current stage, injection-done status, and briefs you explicitly send. Delete everything anytime via <em>More → Delete all data</em> (removes server copies too). Not a medical device. Contact: khk9462@gmail.com</p>
 </div>
 </body>
 </html>
