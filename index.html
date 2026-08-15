@@ -8,35 +8,66 @@
   body { font-family: -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
          max-width: 720px; margin: 0 auto; padding: 32px 20px; line-height: 1.7; color: #333; }
   h1 { font-size: 1.6em; } h2 { font-size: 1.15em; margin-top: 2em; }
+  h3 { font-size: 1.02em; margin-top: 1.6em; }
   .en { color: #666; font-size: 0.95em; border-top: 1px solid #eee; margin-top: 3em; padding-top: 1.5em; }
   table { border-collapse: collapse; width: 100%; font-size: 0.95em; }
   td, th { border: 1px solid #ddd; padding: 8px 10px; text-align: left; }
+  ul { padding-left: 1.2em; }
 </style>
 </head>
 <body>
 <h1>동행 개인정보처리방침</h1>
-<p>시행일: 2026년 7월 20일 · 개정일: 2026년 7월 25일 (v2)</p>
+<p>시행일: 2026년 7월 20일 · 개정일: 2026년 8월 15일 (v3)</p>
 
 <h2>1. 처리하는 정보</h2>
 <table>
 <tr><th>항목</th><th>내용</th><th>보관 위치</th></tr>
-<tr><td>익명 식별자</td><td>Firebase 익명 로그인으로 생성되는 무작위 ID (이름·이메일·전화번호를 수집하지 않습니다)</td><td>서버</td></tr>
-<tr><td>여정 설정·체크리스트·알림 시간</td><td>시술 유형, 단계, 완료 체크</td><td>기기 + (동반자 연결 시) 서버</td></tr>
-<tr><td>음성 기록</td><td>음성은 기기에서 텍스트로만 변환되며 <strong>음성 파일은 저장·전송되지 않습니다</strong>. "AI로 정리"를 누른 경우에만 텍스트와 AI 결과가 서버(Firestore)에 저장됩니다</td><td>기기 + 서버</td></tr>
+<tr><td>이메일 주소·비밀번호</td><td>계정 생성·로그인·비밀번호 재설정에 사용합니다. 비밀번호는 Firebase Authentication이 관리하며 당사는 원문을 보관하지 않습니다. 이름·전화번호·주소는 수집하지 않습니다.</td><td>서버 (Firebase Authentication)</td></tr>
+<tr><td>여정 설정·체크리스트</td><td>시술 유형, 회차, 현재 단계, 주기 시작일, 단계별 체크 진행</td><td>기기 + (동반자 연결 시) 서버</td></tr>
+<tr><td>음성 기록</td><td>음성은 기기에서 텍스트로만 변환되며 <strong>음성 파일은 저장·전송되지 않습니다.</strong> "AI로 정리"를 누른 경우에만 텍스트와 AI 결과가 서버(Firestore)에 저장됩니다.</td><td>기기 + (AI 정리 시) 서버</td></tr>
+<tr><td>투약 예정 시각</td><td>항목명과 예정 시각. <strong>동반자 연결 + 항목별 공유를 직접 켠 경우에만</strong> 전송됩니다(기본 꺼짐).</td><td>기기 + (공유 시) 서버</td></tr>
+<tr><td>다음 진료</td><td>날짜·시각·구분(채취/이식 등). <strong>항목별 공유를 직접 켠 경우에만</strong> 전송됩니다(기본 꺼짐). <strong>병원명과 메모는 공유를 켜도 전송하지 않습니다.</strong></td><td>기기 + (공유 시) 서버</td></tr>
+<tr><td>지역 선택</td><td>지원사업 조회 시 선택한 시·도(예: "서울특별시")가 조회 요청에 포함됩니다. 별도로 저장하지 않으며, 상세 주소·위치 정보는 수집하지 않습니다.</td><td>기기 + 조회 시 서버</td></tr>
 <tr><td>푸시 토큰</td><td>동반자 알림 전송용 기기 토큰</td><td>서버</td></tr>
 </table>
+
+<p><strong>기기에만 저장되고 서버로 전송되지 않는 정보</strong>: 진료 일정의 병원명·메모, 비용 기록, 첨부한 사진(병원 안내문·영수증), 난자·배아 숫자, 피검사(hCG) 수치, 주사 부위 기록, 정부 지원 횟수 카운터.</p>
+
+<h3>1-1. 카메라·사진 접근</h3>
+<p>진료 일정과 비용 기록에 <strong>병원 안내문·영수증 사진</strong>을 붙일 수 있습니다. 이때만 카메라 또는 사진 앨범에 접근하며, 접근 권한은 사진을 붙이려고 직접 누르실 때 요청합니다.</p>
+<ul>
+<li>붙인 사진은 <strong>앱 전용 저장 공간에 복사되어 이 기기에만 남습니다.</strong></li>
+<li><strong>서버로 업로드하지 않고, 동반자에게도 전송하지 않으며, AI로 분석하지 않습니다.</strong> (영수증 금액 자동 인식 기능을 넣지 않은 이유가 이것입니다. 자동 인식을 하려면 사진이 기기를 떠나야 하기 때문입니다.)</li>
+<li>앱 안에서 사진을 삭제하거나 해당 일정·비용 기록을 삭제하면 사진 파일도 함께 지워집니다.</li>
+<li>앨범의 원본 사진에는 접근만 할 뿐 변경·삭제하지 않습니다.</li>
+</ul>
 
 <h2>2. AI 처리 위탁</h2>
 <p>"AI로 정리" 기능 사용 시 기록 텍스트가 당사 서버를 거쳐 Google의 Gemini API로 전송되어 요약·구조화됩니다. Google Cloud(서울 리전) 및 Google Gemini API가 처리 수탁자이며, 광고 목적 사용은 없습니다.</p>
 
 <h2>3. 동반자 공유 (선택, 별도 동의)</h2>
-<p>초대코드로 동반자와 연결하면 <strong>연결 시점에 별도 동의</strong>를 받으며, 동의 후 서로에게 공유되는 정보는 다음으로 한정됩니다: 시술 유형·현재 단계·주사 완료 여부, 그리고 본인이 직접 전송 버튼을 누른 브리핑 문장. <strong>피검사 결과 등 그 외 정보는 자동으로 공유되지 않습니다.</strong> 연결 해제는 언제든 가능합니다.</p>
+<p>초대코드로 동반자와 연결하면 <strong>연결 시점에 별도 동의</strong>를 받습니다. 동의 후 서로에게 공유되는 정보는 다음으로 한정됩니다.</p>
+<ul>
+<li>시술 유형·회차·현재 단계·주기 시작일, 동반자 미션 진행 개수</li>
+<li><strong>본인이 항목별로 공유를 켠 경우에만</strong>: 투약 항목명과 예정 시각, 다음 진료의 날짜·시각·구분</li>
+<li>본인이 직접 전송 버튼을 누른 브리핑 문장</li>
+</ul>
+
+<p><strong>공유되지 않는 것</strong></p>
+<ul>
+<li><strong>투약·미션의 완료 여부는 어떤 형태로도 전송되지 않습니다.</strong> 상대는 예정 시각만 받아 자기 기기에서 알림을 볼 뿐, 실제로 이행했는지는 알 수 없습니다.</li>
+<li><strong>병원명과 메모는 공유를 켜도 전송하지 않습니다.</strong></li>
+<li>피검사 결과, 비용, 난자·배아 숫자, 첨부한 사진 등 그 외 정보는 자동으로 공유되지 않습니다.</li>
+</ul>
+
+<p>공유 항목은 각각 언제든 끌 수 있고, 연결 해제도 언제든 가능합니다.</p>
 
 <h2>4. 제3자 제공 및 광고</h2>
 <p>위 처리 위탁 외 제3자 제공이 없으며, 광고 SDK와 판매 목적 데이터 활용이 없습니다.</p>
 
 <h2>5. 보유 및 삭제</h2>
-<p>앱 내 <strong>더보기 → 데이터 모두 삭제</strong> 시 기기 데이터와 서버 저장분(기록·연결·토큰)이 함께 삭제됩니다. 앱만 삭제한 경우 익명 계정에 접근할 수 없게 되며, 서버 잔존분 삭제는 아래 이메일로 요청할 수 있습니다.</p>
+<p>앱 내 <strong>더보기 → 데이터 모두 삭제</strong> 시 기기 데이터(첨부한 사진 파일 포함)와 서버 저장분(기록·연결·주고받은 브리핑·푸시 토큰)이 함께 삭제됩니다. 계정 자체의 삭제를 원하시면 아래 이메일로 요청해 주세요.</p>
+<p>앱만 삭제한 경우 기기 데이터는 사라지지만 계정과 서버 저장분은 남습니다. 다시 로그인하면 이어서 볼 수 있고, 삭제를 원하시면 앱에서 위 기능을 쓰거나 이메일로 요청하실 수 있습니다.</p>
 
 <h2>6. 의료 정보 고지</h2>
 <p>동행은 의료기기·의료 서비스가 아니며, 앱의 정보는 참고용입니다. 의료적 판단은 반드시 담당 의료진과 상의하시기 바랍니다.</p>
@@ -46,7 +77,12 @@
 
 <div class="en">
 <h2>Privacy Policy (English Summary)</h2>
-<p>Donghaeng uses Firebase anonymous authentication (no name/email/phone collected). Voice is transcribed on-device; audio is never stored or transmitted. If you tap "Organize with AI", the text and AI result are stored on our server (Firestore, Seoul) and processed via Google Gemini API. Optional partner linking (with separate consent) shares only: treatment type, current stage, injection-done status, and briefs you explicitly send. Delete everything anytime via <em>More → Delete all data</em> (removes server copies too). Not a medical device. Contact: khk9462@gmail.com</p>
+<p>Donghaeng requires a free email + password account (Firebase Authentication). No name, phone number, or address is collected.</p>
+<p>Voice is transcribed on-device; <strong>audio is never stored or transmitted.</strong> If you tap "Organize with AI", the resulting text and AI output are stored on our server (Firestore, Seoul region) and processed via the Google Gemini API.</p>
+<p>Optional partner linking (with separate consent) shares only: treatment type, cycle number, current stage, cycle start date, partner-mission progress, and — <strong>only for items you explicitly switch on</strong> — medication labels with their scheduled times and the date, time and type of your next appointment. <strong>Completion status is never transmitted in any form</strong>, and <strong>clinic names and memos are never transmitted even when sharing is on.</strong> Each item can be switched off at any time.</p>
+<p>Camera and photo-library access is requested only when you choose to attach a photo. Attached photos are copied into app-private storage and <strong>never uploaded, never shared with a partner, and never analysed by AI</strong> — which is why automatic receipt-amount recognition is deliberately not offered. Deleting the photo or its appointment/expense record deletes the file too.</p>
+<p>Appointment clinic names and memos, cost records, attached photos, egg/embryo counts, hCG values, injection-site logs and subsidy counters stay on your device only.</p>
+<p>Delete everything anytime via <em>More → Delete all data</em> (this removes server copies, including briefs you sent). Account deletion can be requested by email. Not a medical device. Contact: khk9462@gmail.com</p>
 </div>
 </body>
 </html>
